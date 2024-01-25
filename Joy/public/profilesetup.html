@@ -77,26 +77,51 @@
 
     <div class="container mt-5">
         <div class="card w-50 mx-auto">
-            <div class="card-header bg-primary text-white text-center">
-                <h1>Sign Up</h1>
+            <<h1>Freelancer Profile Setup</h1>
+        <form id="freelancerProfileForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
             </div>
-            <div class="card-body">
-                <form id="MainForm">
-                    <div class="mb-3">
-                        <label for="emailinp" class="form-label">Email address:</label>
-                        <input type="email" class="form-control" id="emailinp" placeholder="name@example.com">
-                    </div>
-                    <div class="mb-3">
-                        <label for="passwordinp" class="form-label">Password:</label>
-                        <input type="password" class="form-control" id="passwordinp" placeholder="Password">
-                    </div>
-                    <div class="mb-3">
-                        <label for="fnameinp" class="form-label">First Name:</label>
-                        <input type="text" class="form-control" id="fnameinp" placeholder="First name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="lnameinp" class="form-label">Last Name:</label>
-                        <input type="text" class="form-control" id="lnameinp" placeholder="Last name">
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="skills">Skills (comma-separated):</label>
+                <input type="text" id="skills" name="skills" required>
+            </div>
+
+            <div class="form-group">
+                <label for="portfolioLink">Portfolio Link:</label>
+                <input type="url" id="portfolioLink" name="portfolioLink" required>
+            </div>
+
+            <div class="form-group">
+                <label for="experience">Years of Experience:</label>
+                <input type="number" id="experience" name="experience" min="0" required>
+            </div>
+
+            <div class="form-group">
+                <label for="availability">Availability:</label>
+                <select id="availability" name="availability" required>
+                    <option value="full-time">Full-time</option>
+                    <option value="part-time">Part-time</option>
+                    <option value="freelance">Freelance</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="bio">Bio:</label>
+                <textarea id="bio" name="bio" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="cv">Upload CV:</label>
+                <input type="file" id="cv" name="cv" accept=".pdf, .doc, .docx" required>
+            </div>
                     </div>
                     <button type="submit" class="btn btn-primary float-end">Create New User</button>
                     <a href="propersignin.html" class="btn btn-primary me-2 float-end">Sign In</a>
