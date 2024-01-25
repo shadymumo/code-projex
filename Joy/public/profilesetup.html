@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer Profile Setup</title>
+    <link rel="stylesheet" href="styles.css"> <!-- You can link to your stylesheet if needed -->
+</head>
+<body>
+
+    <div class="container">
+        <h1>Freelancer Profile Setup</h1>
+        <form id="freelancerProfileForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="skills">Skills (comma-separated):</label>
+                <input type="text" id="skills" name="skills" required>
+            </div>
+
+            <div class="form-group">
+                <label for="portfolioLink">Portfolio Link:</label>
+                <input type="url" id="portfolioLink" name="portfolioLink" required>
+            </div>
+
+            <div class="form-group">
+                <label for="experience">Years of Experience:</label>
+                <input type="number" id="experience" name="experience" min="0" required>
+            </div>
+
+            <div class="form-group">
+                <label for="availability">Availability:</label>
+                <select id="availability" name="availability" required>
+                    <option value="full-time">Full-time</option>
+                    <option value="part-time">Part-time</option>
+                    <option value="freelance">Freelance</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="bio">Bio:</label>
+                <textarea id="bio" name="bio" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="cv">Upload CV:</label>
+                <input type="file" id="cv" name="cv" accept=".pdf, .doc, .docx" required>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>
