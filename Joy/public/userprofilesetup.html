@@ -119,8 +119,8 @@
                         <input type="file" id="cv" name="cv" accept=".pdf, .doc, .docx" required>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary float-end">Update User Profile</button>
-                    <a href="propersignin.html" class="btn btn-primary me-2 float-end">Sign In</a>
+                    <a href="submit" class="btn btn-primary me-2 float-end">Update user data</a> 
+                    <a href="login-page.html" class="btn btn-primary me-2 float-end">Sign In</a>
                 </form>
             </div>
         </div>
@@ -194,20 +194,73 @@
         <!-- Footer End -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     
+<script>
+    const firebaseConfig = {
+          apiKey: "AIzaSyBSigL_KfTlHHcV6NpiD4XvSGUsFh_klwg",
+  authDomain: "joy-projekt.firebaseapp.com",
+  databaseURL: "https://joy-projekt-default-rtdb.firebaseio.com",
+  projectId: "joy-projekt",
+  storageBucket: "joy-projekt.appspot.com",
+  messagingSenderId: "1065590647629",
+  appId: "1:1065590647629:web:0ba5e67001bb80a6e96504",
+  measurementId: "G-GKDNSQ313Y"
+        };
+    
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+       
+    
+
+
+    
+    const form = document.getElementById('MainForm'); // Assuming your form ID is 'MainForm'
+
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault(); // Prevent default form submission
+      
+          const email = form.elements['emailinp'].value;
+          const name = form.elements['fullnameinp'].value;
+          const skills = form.elements['skillinp'].value;
+          const portfolioLink = form.elements['Portfolio Link /github:'].value;
+          const experience = form.elements['Years of Experience'].value;
+          const availability = form.elements['availability'].value;
+          const cvFile = form.elements['cv'].files[0]; // Get the first selected file
+      
+          // Validate inputs (add as needed)
+          if (!email || !name || !skills || !portfolioLink || !experience || !availability || !cvFile) {
+            alert('Please fill in all required fields.');
+            return;
+          }
+      
+          try {
+            // Create a new child in the Realtime Database
+            const newUserDataRef = database.ref('users').push(); // Push creates a new unique ID
+            await newUserDataRef.set({
+              email,
+              name,
+              skills,
+              portfolioLink,
+              experience,
+              availability,
+              cv: cvFile.name // Store only the file name
+            });
+      
+            // Optionally upload the CV file (if allowed by Realtime Database security rules)
+            const storageRef = firebase.storage().ref(`${newUserDataRef.key}/cv`);
+            await storageRef.put(cvFile);
+      
+            alert('Form submitted successfully!');
+            form.reset(); // Clear form fields
+          } catch (error) {
+            console.error('Error adding data: ', error);
+            alert('An error occurred. Please try again later.');
+          }
+        });</script>
 
     
         
    
-    <script>
-        function submitForm() {
-            // Perform any form validation if needed
-
-            // Display a thank-you pop-up
-            alert("Thank you for updating your profile!");
-
-            // Redirect to another page
-            window.location.href = 'job-list.html';
-        }
-    </script>
+   
 </body>
 </html>
